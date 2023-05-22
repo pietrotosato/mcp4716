@@ -46,10 +46,11 @@ public:
   } MCP4716_REF_t;
 
   MCP4716(MCP4716Ax_ADDRESS_t addr, I2C *conn);
+  void init(MCP4716Ax_ADDRESS_t addr, I2C *conn);
   // void setGain(int G); // 1=x1, 2=x2
   uint8_t setValue(uint16_t value);
   void setVref(MCP4716_REF_t Vr);
-  uint16_t getValue();
+  int getValue();
 
 private:
   I2C *connection;
@@ -60,7 +61,7 @@ private:
   uint8_t lowByte(uint16_t x);
   uint8_t highByte(uint16_t x);
 
-  char buffer[3];
+  
 };
 
 #endif
